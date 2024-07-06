@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vote-deploy
+  namespace: default
+  labels:
+    app: vote-app
+spec:
+  selector:
+    matchLabels:
+      app: vote-app
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        app: vote-app
+    spec:
+      containers:
+      - name: vote-app
+        image: dockersamples/examplevotingapp_vote                               
+        ports:
+        - containerPort: 80          
+          name: vote-app
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vote-app-svc
+  namespace: default
+spec:
+  selector:
+    app: vote-app
+  type: LoadBalancer
+  ports:
+  - name: vote-app
+    protocol: TCP
+    port: 80
+    targetPort: 80         
