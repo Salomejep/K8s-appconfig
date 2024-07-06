@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wcm
+data:
+  data_host: mysql-svc
+

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-config
+data:
+ SERVER: mongo-svc
+ ME_CONFIG_BASICAUTH: "true"

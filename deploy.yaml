@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: geo-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: geo-app
+  template:
+    metadata:
+      labels:
+        app: geo-app
+    spec:
+      containers:
+      - name: geo-app
+        image: 965662434281.dkr.ecr.us-east-1.amazonaws.com/utc-app-dev@sha256:49a769d17bbc6c4ed3bace6a1f678d81ce7721257511114d3428da1679fe56c3 
+        
+        ports:
+        - containerPort: 8082
